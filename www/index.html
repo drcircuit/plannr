@@ -39,14 +39,14 @@
             <td>{{time.clock}}</td>
             <td ng-class="time[day].color" ng-repeat="day in days" data-drop="true" data-hour="{{time.index}}" data-day="{{day}}" jqyoui-droppable="{multiple:false, onDrop: 'addStuff'}">
                 <div class="text-center" ng-if="time[day]">
-                    <i ng-if="day != 'Monday'" class="fa fa-chevron-circle-left" ng-click="plan(time.index, days[days.indexOf(day)-1], time[day])"></i>
-                    <i ng-if="time.index > 0" class="fa fa-chevron-circle-up" ng-click="plan(time.index-1, days[days.indexOf(day)], time[day])"></i>
+                    <i ng-if="day != 'Monday'" class="fa fa-chevron-circle-left" ng-click="plan(time.index, getDay(day,-1), time[day])"></i>
+                    <i ng-if="time.index > 0" class="fa fa-chevron-circle-up" ng-click="plan(time.index-1, getDay(day), time[day])"></i>
                     <i ng-if="time[day].icon"
                        class="icon fa fa-{{time[day].icon}}"></i>
                      {{time[day].title}}
                     <i ng-click="remove(time.index, day)" class="fa fa-remove"></i>
-                    <i ng-if="time.index < 22" class="fa fa-chevron-circle-down" ng-click="plan(time.index+1, days[days.indexOf(day)], time[day])"></i>
-                    <i ng-if="day != 'Sunday'" class="fa fa-chevron-circle-right"  ng-click="plan(time.index, days[days.indexOf(day)+1], time[day])"></i>
+                    <i ng-if="time.index < 22" class="fa fa-chevron-circle-down" ng-click="plan(time.index+1, getDay(day), time[day])"></i>
+                    <i ng-if="day != 'Sunday'" class="fa fa-chevron-circle-right"  ng-click="plan(time.index,getDay(day,1), time[day])"></i>
                 </div>
             </td>
         </tr>

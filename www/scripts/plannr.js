@@ -21,6 +21,13 @@ angular.module('plannr', ['ngDragDrop','ngStorage'])
     .controller('scheduleCtrl', ['$scope','$localStorage', function ($scope, $storage) {
 
         $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday'];
+        $scope.getDay = function (day, index) {
+            if (index) {
+                return $scope.days[$scope.days.indexOf(day) + index];
+            } else {
+                return $scope.days[$scope.days.indexOf(day)];
+            }
+        };
         $scope.update   = function (index, day) {
             console.log(index, day);
         };
