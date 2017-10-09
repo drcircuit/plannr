@@ -28,7 +28,13 @@ angular.module('plannr', ['ngDragDrop','ngStorage'])
             var sub = ui.draggable.scope().subject;
             console.log(e.target.dataset.day);
             console.log(e.target.dataset.hour);
-            $scope.$storage.schedule[e.target.dataset.hour][e.target.dataset.day] = sub;
+            console.log(sub);
+            $scope.plan(e.target.dataset.hour, e.target.dataset.day, sub);
+        };
+        $scope.plan = function (hour, day, sub) {
+            console.log(hour);
+            console.log(day);
+            $scope.$storage.schedule[hour][day] = sub;
         };
         $scope.remove = function (time, day) {
             console.log(time, day);
