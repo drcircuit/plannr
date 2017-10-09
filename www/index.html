@@ -12,7 +12,7 @@
     <script src="frameworks/bootstrap/dist/js/bootstrap.js"></script>
     <script src="frameworks/angular/angular.js"></script>
     <script src="frameworks/angular-dragdrop/src/angular-dragdrop.js"></script>
-    <script src="frameworks/clipboard/dist/clipboard.js"></script>
+    <script src="frameworks/ngstorage/ngstorage.js"></script>
     <script src="scripts/plannr.js"></script>
 </head>
 <body>
@@ -31,16 +31,16 @@
 <div class="responsive-table" ng-controller="scheduleCtrl">
     <table class="table">
         <tr>
-            <th><button id="saveBtn" data-clipboard-text="{{serialized}}"><i class="fa fa-save"></i></button> Time</th>
             <th class="text-center" ng-repeat="day in days">{{day}}</th>
         </tr>
-        <tr ng-repeat="time in schedule">
+        <tr ng-repeat="time in $storage.schedule">
             <td>{{time.clock}}</td>
             <td ng-class="time[day].color" ng-repeat="day in days" data-drop="true" data-hour="{{time.index}}" data-day="{{day}}" jqyoui-droppable="{multiple:false, onDrop: 'addStuff'}">
                 <div class="text-center" ng-if="time[day]">
                     <i ng-if="time[day].icon"
                        class="icon fa fa-{{time[day].icon}}"></i>
                      {{time[day].title}}
+                    <i ng-click="remove(time.index, day)" class="fa fa-remove"></i>
                 </div>
             </td>
         </tr>

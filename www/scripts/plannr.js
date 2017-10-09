@@ -1,5 +1,5 @@
 
-angular.module('plannr', ['ngDragDrop'])
+angular.module('plannr', ['ngDragDrop','ngStorage'])
     .controller('menuCtrl', ['$scope', function ($scope) {
         $scope.subjects = [
             {title: 'Sleep', icon: 'bed', color: 'purple'},
@@ -18,13 +18,8 @@ angular.module('plannr', ['ngDragDrop'])
             {title: 'Exercise', icon: 'bicycle', color: 'grey'}
         ]
     }])
-    .controller('scheduleCtrl', ['$scope', function ($scope) {
-        var clp = new Clipboard('#saveBtn');
-        clp.on('success', function(e) {
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-        });
+    .controller('scheduleCtrl', ['$scope','$localStorage', function ($scope, $storage) {
+
         $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday'];
         $scope.update   = function (index, day) {
             console.log(index, day);
@@ -33,22 +28,31 @@ angular.module('plannr', ['ngDragDrop'])
             var sub = ui.draggable.scope().subject;
             console.log(e.target.dataset.day);
             console.log(e.target.dataset.hour);
-            $scope.schedule[e.target.dataset.hour][e.target.dataset.day] = sub;
-            $scope.serialized = JSON.stringify($scope.schedule);
+            $scope.$storage.schedule[e.target.dataset.hour][e.target.dataset.day] = sub;
         };
-        $scope.schedule = [];
-        var startClock  = 7;
-        for (var i = 0; i < 24; i++) {
-            var clock = startClock + i;
-            if (clock > 23) {
-                startClock = -16;
-                clock      = 0;
+        $scope.remove = function (time, day) {
+            console.log(time, day);
+            $scope.$storage.schedule[time][day] = undefined;
+        };
+
+        $scope.$storage = $storage;
+        if(!$scope.$storage.schedule) {
+            $scope.$storage.schedule = [];
+            var startClock  = 7;
+            for (var i = 0; i < 24; i++) {
+                var clock = startClock + i;
+                if (clock > 23) {
+                    startClock = -16;
+                    clock      = 0;
+                }
+                $scope.$storage.schedule.push({
+                    clock: pad(clock, 2) + ':00',
+                    index: i
+                })
             }
-            $scope.schedule.push({
-                clock: pad(clock, 2) + ':00',
-                index: i
-            })
         }
+
+
     }]);
 
 function pad(num, length, chr) {
