@@ -1,0 +1,56 @@
+.pink{
+    background: #c74f69;
+    color: white;
+}
+.black{
+    background: #010101;
+    color: white;
+}
+.red{
+    background: #a00100;
+    color: white;
+}
+.purple{
+    background: #b531b4;
+    color: white;
+}
+.orange{
+    background: #f79741;
+    color: white;
+}
+.green{
+    background: #21a421;
+    color: white;
+}
+.blue{
+    background: #373e9c;
+    color: white;
+}
+.lime{
+    background: #86b731;
+    color: white;
+}
+.teal{
+    background: #17999e !important;
+    color: white;
+}
+.yellow{
+    background: #eed908;
+    color: white;
+}
+.cyan{
+    background: #14707a;
+    color: white;
+}
+.light-blue{
+    background: #4983c5;
+    color: white;
+}
+.indigo{
+    background: #532d80;
+    color: white;
+}
+.grey{
+    background: #333;
+    color: white;
+}

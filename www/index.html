@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="plannr">
+<head>
+    <meta charset="UTF-8">
+    <title>Plannr</title>
+    <link rel="stylesheet" href="frameworks/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="frameworks/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="frameworks/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="style/plannr.css">
+    <script src="frameworks/jquery/dist/jquery.js"></script>
+    <script src="frameworks/jquery-ui/jquery-ui.js"></script>
+    <script src="frameworks/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="frameworks/angular/angular.js"></script>
+    <script src="frameworks/angular-dragdrop/src/angular-dragdrop.js"></script>
+    <script src="frameworks/clipboard/dist/clipboard.js"></script>
+    <script src="scripts/plannr.js"></script>
+</head>
+<body>
+<div class="menu" ng-controller="menuCtrl">
+    <ul class="list-inline">
+        <li ng-repeat="subject in subjects">
+            <div data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
+                 jqyoui-draggable="{animate:true,placeholder: 'keep', icon: '{{subject.icon}}',color: '{{subject.color}}', name: '{{subject.title}}'} "
+                 class="btn btn-default btn-draggable" ng-class="subject.color"><i ng-if="subject.icon"
+                                                                                   class="icon fa fa-{{subject.icon}}"></i>
+                {{subject.title}}
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="responsive-table" ng-controller="scheduleCtrl">
+    <table class="table">
+        <tr>
+            <th><button id="saveBtn" data-clipboard-text="{{serialized}}"><i class="fa fa-save"></i></button> Time</th>
+            <th class="text-center" ng-repeat="day in days">{{day}}</th>
+        </tr>
+        <tr ng-repeat="time in schedule">
+            <td>{{time.clock}}</td>
+            <td ng-class="time[day].color" ng-repeat="day in days" data-drop="true" data-hour="{{time.index}}" data-day="{{day}}" jqyoui-droppable="{multiple:false, onDrop: 'addStuff'}">
+                <div class="text-center" ng-if="time[day]">
+                    <i ng-if="time[day].icon"
+                       class="icon fa fa-{{time[day].icon}}"></i>
+                     {{time[day].title}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
