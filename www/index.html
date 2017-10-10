@@ -51,7 +51,7 @@
                            class="icon fa fa-{{time[day].icon}}"></i>
                         <span class="caption">{{time[day].title}}</span>
                         <i ng-click="remove(time.index, day)" class="remove-x fa fa-remove"></i>
-                        <i ng-if="time.index < 22" class="arrow-down fa fa-chevron-circle-down"
+                        <i ng-if="time.index < 23" class="arrow-down fa fa-chevron-circle-down"
                            ng-click="plan(time.index+1, getDay(day), time[day])"></i>
                         <i ng-if="day != 'Sunday'" class="arrow-right fa fa-chevron-circle-right"
                            ng-click="plan(time.index,getDay(day,1), time[day])"></i>

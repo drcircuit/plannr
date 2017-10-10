@@ -55,7 +55,7 @@ angular.module('plannr', ['ngDragDrop','ngStorage'])
             for (var i = 0; i < 24; i++) {
                 var clock = startClock + i;
                 if (clock > 23) {
-                    startClock = -16;
+                    startClock = -15;
                     clock      = 0;
                 }
                 $scope.$storage.schedule.push({
