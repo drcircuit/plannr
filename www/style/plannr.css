@@ -54,3 +54,99 @@
     background: #333;
     color: white;
 }
+#menu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: black;
+    text-align: left;
+}
+#menu li{
+    display: block;
+}
+
+#menu li .btn{
+    width: 120px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 0;
+    margin: 0;
+}
+
+#content{
+    margin-top: 50px;
+}
+.entry {
+    font-size: 22px;
+    position: relative;
+    min-width: 100px;
+    height: 90px;
+}
+.entry .fa{
+    font-size: 22px;
+}
+.table .atd {
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+}
+.entry .icon{
+    display: block;
+    font-size:35px;
+    padding: 4px;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 24px;
+
+}
+.navbar-toggle{
+    background: black !important;
+    color: white;
+}
+.entry .caption{
+    margin: 5px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50px;
+    display: none;
+}
+
+.entry .arrow-left{
+    position: absolute;
+    left: -5px;
+    top: 35px;
+    display: block;
+    color: white;
+}
+.entry .arrow-right{
+    position: absolute;
+    right: -5px;
+    top: 35px;
+    display: block;
+    color: white;
+}
+.entry .arrow-up{
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: white;
+    position: absolute;
+    top: -4px;
+}
+.entry .arrow-down{
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: white;
+    position: absolute;
+    bottom: -4px;
+}
+.entry .remove-x{
+    position: absolute;
+    right: -3px;
+    top: -2px;
+    font-size: 18px;
+    display: block;
+    color: white;
+}
