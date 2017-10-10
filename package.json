@@ -6,11 +6,13 @@
   "dependencies": {
     "express": "^4.16.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server"
   },
   "author": "Espen Sande Larsen",
-  "license": "ISC"
+  "license": "GPLv3"
 }
