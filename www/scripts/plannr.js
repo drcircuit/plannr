@@ -18,8 +18,17 @@ angular.module('plannr', ['ngDragDrop','ngStorage'])
             {title: 'Exercise', icon: 'bicycle', color: 'grey'}
         ]
     }])
-    .controller('scheduleCtrl', ['$scope','$localStorage', function ($scope, $storage) {
+    .controller('scheduleCtrl', ['$scope','$localStorage','$interval', function ($scope, $storage, $interval) {
 
+        var tick = function () {
+            $scope.currentTime = moment().format("HH:00");
+            $scope.currentDay = moment().format("dddd");
+            var i = moment().subtract(7,'hour').hour();
+            $scope.currentActivity = $scope.$storage.schedule[i][$scope.currentDay];
+            $scope.currentActivity.time  = $scope.$storage.schedule[i].clock;
+        };
+
+        $interval(tick, 5000);
         $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday'];
         $scope.getDay = function (day, index) {
             if (index) {
@@ -49,6 +58,7 @@ angular.module('plannr', ['ngDragDrop','ngStorage'])
         };
 
         $scope.$storage = $storage;
+        tick();
         if(!$scope.$storage.schedule) {
             $scope.$storage.schedule = [];
             var startClock  = 7;

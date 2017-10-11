@@ -24,6 +24,7 @@
     "angular-dragdrop": "^1.0.13",
     "font-awesome": "fontawesome#^4.7.0",
     "angular-local-storage": "^0.7.1",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "moment": "^2.19.0"
   }
 }

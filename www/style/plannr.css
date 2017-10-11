@@ -2,6 +2,7 @@
     background: #c74f69;
     color: white;
 }
+
 .black{
     background: #010101;
     color: white;
@@ -82,6 +83,27 @@
     min-width: 100px;
     height: 90px;
 }
+.active-time, .active-day{
+    background: rgba(244,0,0,1);
+    color: white;
+    font-weight: bold;
+}
+.active-tile{
+    border: 4px solid rgba(244,0,0,0.4)!important;
+
+}
+.time{
+    text-align: center;
+    font-size: 22px;
+    vertical-align: middle !important;
+    height: 100%;
+    display: table-cell;
+    border: 1px solid yellow;
+}
+.weekday{
+    text-align: center;
+    font-size: 22px;
+}
 .entry .fa{
     font-size: 22px;
 }
@@ -118,6 +140,7 @@
     top: 35px;
     display: block;
     color: white;
+    z-index: 1000;
 }
 .entry .arrow-right{
     position: absolute;
@@ -125,6 +148,7 @@
     top: 35px;
     display: block;
     color: white;
+    z-index: 1000;
 }
 .entry .arrow-up{
     width: 100%;
@@ -133,6 +157,7 @@
     color: white;
     position: absolute;
     top: -4px;
+    z-index: 1000;
 }
 .entry .arrow-down{
     width: 100%;
@@ -141,6 +166,7 @@
     color: white;
     position: absolute;
     bottom: -4px;
+    z-index: 1000;
 }
 .entry .remove-x{
     position: absolute;

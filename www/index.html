@@ -13,6 +13,7 @@
     <script src="frameworks/angular/angular.js"></script>
     <script src="frameworks/angular-dragdrop/src/angular-dragdrop.js"></script>
     <script src="frameworks/ngstorage/ngStorage.js"></script>
+    <script src="frameworks/moment/moment.js"></script>
     <script src="scripts/touchpunch.js"></script>
     <script src="scripts/plannr.js"></script>
 </head>
@@ -34,14 +35,16 @@
 <div class="app" id="content">
 
     <div class="table-responsive" ng-controller="scheduleCtrl">
+        <div class="heading"><h1 class="current-activity"><i class="fa fa-clock-o"></i>{{currentActivity.time}} {{currentActivity.title}}</h1></div>
+
         <table class="table table-bordered">
             <tr>
-                <th class="text-center"><i class="fa fa-clock-o"></i></th>
-                <th class="text-center" ng-repeat="day in days">{{day}}</th>
+                <th class="text-center weekday"><i class="fa fa-clock-o"></i></th>
+                <th ng-class="{'active-day': day === currentDay}" class="text-center weekday" ng-repeat="day in days">{{day}}</th>
             </tr>
             <tr ng-repeat="time in $storage.schedule">
-                <td>{{time.clock}}</td>
-                <td ng-class="time[day].color" ng-repeat="day in days" data-drop="true" data-hour="{{time.index}}"
+                <td ng-class="{'active-time':currentTime === time.clock}" class="time">{{time.clock}}</td>
+                <td ng-class="[time[day].color,{ 'active-tile': currentTime === time.clock && day === currentDay}]" ng-repeat="day in days" data-drop="true" data-hour="{{time.index}}"
                     data-day="{{day}}" jqyoui-droppable="{multiple:false, onDrop: 'addStuff'}">
                     <div title="{{time[day].title}}" class="text-center entry" ng-if="time[day]">
                         <i ng-if="day != 'Monday'" class="arrow-left fa fa-chevron-circle-left"
